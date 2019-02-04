@@ -19,6 +19,7 @@ var files = []
 var user = ''
 var users = []
 var managerLevel = 0
+var fileNotedata = []
 //var team = []
 
 
@@ -707,14 +708,15 @@ function makeFileTable(fileList) {
   <thead class="text-warning">
       <tr>
         <th>Action</th>
-        <th>FileNAme</th>
+        <th>FileName</th>
         <th>Security Level</th>
         <th>Filter</th>
         <th>Path</th>
         <th>MD5</th>
+        <th>FileNote</th>
       </tr>
     </thead>
-    <tbody>`;
+    <tbody >`;
 
     table += fileList.map( e => `
       <tr id="row-${e.MD5}" onchange="changedSelect(this)">
@@ -731,7 +733,8 @@ function makeFileTable(fileList) {
         <td>${e.securityClass}</td>
         <td>${e.filter}</td>
         <td>${e.filePath}</td>
-        <td ><span title="${e.MD5}">${e.MD5.substring(0, 8)}</span></td>
+        <td ><span title="${e.MD5}">${e.MD5.substring(0, 4)}...</span></td>
+        <td ><button id="btn-${e.MD5}" onClick="fileNoteSelected(this)"  type="button" class="btn btn-info">Info</button></td>
       </tr>
     `).join("\n")
 
@@ -755,13 +758,38 @@ async function updateData() {
 
 }
 
+function fileNoteSelected(e) {
+    //e.preventDefaults()
+    //console.log("selected", btn.value)
+    var MD5id = e.id.substring(4)
+    console.log("this select", e.id)
+    console.log("MD5 found ", MD5id)
+    var fileInfo = findFileFromStorage(MD5id)
+    console.log("fileInfo", fileInfo[0])
+    document.getElementById("file-note-md5").innerHTML = MD5id
+    document.getElementById("file-note-class").innerHTML = fileInfo[0].fileName
+    document.getElementById("file-note-sec").innerHTML = fileInfo[0].filePath
+    $('#exampleModalCenter').modal('show')
+    var temp = `
+    
+   
+    
+`
 
+}
 function findUserFromStorage(ID) {
   //const objArray = JSON.parse(localStorage.getItem("local_data"));
   return filterObj = employeedata.filter(function(e) {
       return e.EMPID == ID;
   });
 }
+
+function findFileNoteFromStorage(ID) {
+    //const objArray = JSON.parse(localStorage.getItem("local_data"));
+    return filterObj = fileNotedata.filter(function(f) {
+        return f.MD5 == ID;
+    });
+  }
 
 
 // function findUserFromStorage(ID) {
@@ -781,11 +809,18 @@ function findUserFilesFromStorage(ID) {
   });
 }
 
-console.log ("lengths", SecClassFiles.length)
+function findFileFromStorage(ID) {
+    //const objArray = JSON.parse(localStorage.getItem("local_data"));
+    return filterObj = metaFactdata.filter(function(e) {
+        return e.MD5 == ID;
+    });
+  }
+
+//console.log ("lengths", SecClassFiles.length)
 
 function makePieChart() {
-  var PCI = PCIFiles.length
-  console.log("We GOt PCI", PCIFiles)
+  //var PCI = PCIFiles.length
+  //console.log("We GOt PCI", PCIFiles)
 
   var chart = c3.generate({
     size: {
@@ -803,8 +838,8 @@ function makePieChart() {
         ],
         type : 'donut',
         onclick: function (d, i) { console.log("onclick", d, i); },
-        onmouseover: function (d, i) { console.log("onmouseover", d, i); },
-        onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+        //onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+        //onmouseout: function (d, i) { console.log("onmouseout", d, i); }
     },
     donut: {
         title: "Filters"
@@ -856,8 +891,8 @@ function makeRadialBar() {
         ],
         type : 'donut',
         onclick: function (d, i) { console.log("onclick", d, i); },
-        onmouseover: function (d, i) { console.log("onmouseover", d, i); },
-        onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+        //onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+        //onmouseout: function (d, i) { console.log("onmouseout", d, i); }
     },
     donut: {
         title: "Security"
