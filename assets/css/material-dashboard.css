@@ -14,6 +14,9 @@
  */
 
 /*     brand Colors              */
+img.avatar {
+  height: 30px;
+}
 
 .card {
   font-size: .875rem;

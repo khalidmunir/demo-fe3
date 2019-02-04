@@ -7,8 +7,15 @@
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Material Dashboard by Creative Tim
+    Material Dashboard 
   </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script src="http://cdn.syncfusion.com/16.4.0.42/js/web/ej.web.all.min.js"></script>
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.12/c3.css"
+    rel="stylesheet"
+  />
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
@@ -28,12 +35,18 @@
         Tip 2: you can also add an image using data-image tag
     -->
       <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-          Creative Tim
+        <a href="index.html" class="simple-text logo-normal">
+          Sprint 3
         </a>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
+            <li class="nav-item ">
+                <a class="nav-link" href="./index.html">
+                  <i class="material-icons">content_paste</i>
+                  <p>User List</p>
+                </a>
+              </li>
           <li class="nav-item active  ">
             <a class="nav-link" href="./dashboard.html">
               <i class="material-icons">dashboard</i>
@@ -44,6 +57,18 @@
             <a class="nav-link" href="./user.html">
               <i class="material-icons">person</i>
               <p>User Profile</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="/demo-fe/index.html">
+              <i class="material-icons">content_paste</i>
+              <p>Sprint1 Demo</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="/demo-fe2/index.html">
+              <i class="material-icons">content_paste</i>
+              <p>Sprint2 Demo</p>
             </a>
           </li>
           <li class="nav-item ">
@@ -85,7 +110,7 @@
           <li class="nav-item active-pro ">
             <a class="nav-link" href="./upgrade.html">
               <i class="material-icons">unarchive</i>
-              <p>Upgrade to PRO</p>
+             
             </a>
           </li>
         </ul>
@@ -96,8 +121,9 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="#pablo">Dashboard</a>
+            <a id="user-name" class="navbar-brand" href="#pablo">Dashboard</a>
           </div>
+          
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
             <span class="navbar-toggler-icon icon-bar"></span>
@@ -161,23 +187,41 @@
       <div class="content">
         <div class="container-fluid">
 
-
+            <div class="navbar-wrapper">
+                <a class="navbar-brand" href="#pablo">Own Stats</a>
+              </div>
             <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                      <div class="card-header card-header-danger card-header-icon">
+                        <div class="card-icon">
+                          <i class="material-icons">delete_forever</i>
+                        </div>
+                        <p class="card-category">Deleted Files</p>
+                        <h3 class="card-title"><span id="user-fixed-issues"></span></h3>
+                      </div>
+                      <div class="card-footer">
+                        <div class="stats">
+                          <i class="material-icons">local_offer</i> Tracked from StoredIQ
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
                   <div class="card card-stats">
                     <div class="card-header card-header-warning card-header-icon">
                       <div class="card-icon">
                         <i class="material-icons">content_copy</i>
                       </div>
-                      <p class="card-category">Used Space</p>
-                      <h3 class="card-title">49/50
-                        <small>GB</small>
+                      <p class="card-category">Used Files</p>
+                      <h3 class="card-title"><span id="user-total"></span>
+                        <small>Total</small>
                       </h3>
                     </div>
                     <div class="card-footer">
                       <div class="stats">
                         <i class="material-icons text-danger">warning</i>
-                        <a href="#pablo">Get More Space...</a>
+                        <a href="#pablo">Use Less Space...</a>
                       </div>
                     </div>
                   </div>
@@ -198,22 +242,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                  <div class="card card-stats">
-                    <div class="card-header card-header-danger card-header-icon">
-                      <div class="card-icon">
-                        <i class="material-icons">delete_forever</i>
-                      </div>
-                      <p class="card-category">Fixed Issues</p>
-                      <h3 class="card-title">75</h3>
-                    </div>
-                    <div class="card-footer">
-                      <div class="stats">
-                        <i class="material-icons">local_offer</i> Tracked from Github
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                
                 <div class="col-lg-3 col-md-6 col-sm-6">
                   <div class="card card-stats">
                     <div class="card-header card-header-info card-header-icon">
@@ -231,6 +260,9 @@
                   </div>
                 </div>
               </div>
+              <div class="navbar-wrapper">
+                  <a class="navbar-brand" href="#pablo">Team Stats</a>
+                </div>
               <div class="row">
                   <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="card team-card card-stats">
@@ -301,12 +333,68 @@
                   </div>
                 </div>
            
+                <div class="navbar-wrapper">
+                    <a class="navbar-brand" href="#pablo">Weekly Graphs</a>
+                  </div>
+                <div class="row">
+                    <div class="col-md-4">
+                      <div class="card card-chart">
+                        <div class="card-header card-header-success">
+                          <div class="ct-chart" id="dailySalesChart"></div>
+                        </div>
+                        <div class="card-body">
+                          <h4 class="card-title">Daily Sales</h4>
+                          <p class="card-category">
+                            <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
+                        </div>
+                        <div class="card-footer">
+                          <div class="stats">
+                            <i class="material-icons">access_time</i> updated 4 minutes ago
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="card card-chart">
+                        <div class="card-header card-header-warning">
+                          <div class="ct-chart" id="websiteViewsChart"></div>
+                        </div>
+                        <div class="card-body">
+                          <h4 class="card-title">Email Subscriptions</h4>
+                          <p class="card-category">Last Campaign Performance</p>
+                        </div>
+                        <div class="card-footer">
+                          <div class="stats">
+                            <i class="material-icons">access_time</i> campaign sent 2 days ago
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="card card-chart">
+                        <div class="card-header card-header-danger">
+                          <div class="ct-chart" id="completedTasksChart"></div>
+                        </div>
+                        <div class="card-body">
+                          <h4 class="card-title">Completed Tasks</h4>
+                          <p class="card-category">Last Campaign Performance</p>
+                        </div>
+                        <div class="card-footer">
+                          <div class="stats">
+                            <i class="material-icons">access_time</i> campaign sent 2 days ago
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
 
           <div class="row">
             <div class="col-md-4">
               <div class="card card-chart">
                 <div class="card-header card-header-success">
-                  <!-- <div class="ct-chart" id="dailySalesChart"></div> -->
+                    <div id="pie-chart"></div>
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">Daily Sales</h4>
@@ -323,7 +411,7 @@
             <div class="col-md-4">
               <div class="card card-chart">
                 <div class="card-header card-header-warning">
-                  <div class="ct-chart" id="websiteViewsChart"></div>
+                    <div id="chart"></div>
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">Email Subscriptions</h4>
@@ -339,7 +427,7 @@
             <div class="col-md-4">
               <div class="card card-chart">
                 <div class="card-header card-header-danger">
-                  <div class="ct-chart" id="completedTasksChart"></div>
+                    <div id="chart3"></div>
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">Completed Tasks</h4>
@@ -353,54 +441,108 @@
               </div>
             </div>
           </div>
+          <div class="navbar-wrapper">
+              <a class="navbar-brand" href="#pablo">File List</a>
+            </div>
           <div class="row">
               <div class="col-lg-12 col-md-12">
                   <div class="card">
                     <div class="card-header card-header-warning">
                       <h4 class="card-title">Employees Stats</h4>
                       <p class="card-category">New employees on 15th September, 2016</p>
+                      <hr>
+                <div class="well">
+                  <div class="button-group mt-2 mb-2">
+                    <button
+                      onclick="allClicked()"
+                      type="button"
+                      class="ml-4 btn btn-info navbar-btn"
+                    >
+                      All files (<span id="user-total1"></span>)
+                    </button>
+                    <button
+                      onclick="pciClicked()"
+                      type="button"
+                      class="btn btn-primary navbar-btn"
+                    >
+                      PCI files (<span id="pci-total"></span>)
+                    </button>
+                    <button
+                      onclick="piiClicked()"
+                      type="button"
+                      class="btn btn-primary navbar-btn"
+                    >
+                      PII files (<span id="pii-total"></span>)
+                    </button>
+                    <button
+                      onclick="specClicked()"
+                      type="button"
+                      class="btn btn-primary navbar-btn"
+                    >
+                      SPEC files (<span id="spec-total"></span>)
+                    </button>
+                    <button
+                      onclick="retClicked()"
+                      type="button"
+                      class="btn btn-primary navbar-btn"
+                    >
+                      RET files (<span id="ret-total"></span>)
+                    </button>
+                  </div>
+                  <div class="button-group ml-4">
+                      <button
+                      onclick="pubClicked()"
+                      type="button"
+                      class="col-2 btn btn-success btn-sm navbar-btn"
+                    >
+                      PUBLIC (<span id="pub-class-total"></span>)
+                    </button>
+                    <button
+                      onclick="secretClicked()"
+                      type="button"
+                      class="col-2 btn btn-danger btn-sm navbar-btn"
+                    >
+                      SECRET (<span id="sec-class-total"></span>)
+                    </button>
+                    <button
+                      onclick="senClassClicked()"
+                      type="button"
+                      class="col-2 btn btn-danger btn-sm navbar-btn"
+                    >
+                      SENSITIVE CLASSIFIED (<span id="sen-class-total"></span>)
+                    </button>
+                    <button
+                      onclick="ClassClicked()"
+                      type="button"
+                      class="col-2 btn btn-danger btn-sm navbar-btn"
+                    >
+                      CLASSIFIED (<span id="cla-class-total"></span>)
+                    </button>
+                    <button
+                      onclick="intClicked()"
+                      type="button"
+                      class="col-2 btn btn-danger btn-sm navbar-btn"
+                    >
+                      INTERNAL (<span id="int-class-total"></span>)
+                    </button>
+                    
+                  </div>
+                </div>
                     </div>
                     <div class="card-body table-responsive">
-                      <table class="table table-hover">
-                        <thead class="text-warning">
-                          <th>ID</th>
-                          <th>Name</th>
-                          <th>Salary</th>
-                          <th>Country</th>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>1</td>
-                            <td>Dakota Rice</td>
-                            <td>$36,738</td>
-                            <td>Niger</td>
-                          </tr>
-                          <tr>
-                            <td>2</td>
-                            <td>Minerva Hooper</td>
-                            <td>$23,789</td>
-                            <td>Curaçao</td>
-                          </tr>
-                          <tr>
-                            <td>3</td>
-                            <td>Sage Rodriguez</td>
-                            <td>$56,142</td>
-                            <td>Netherlands</td>
-                          </tr>
-                          <tr>
-                            <td>4</td>
-                            <td>Philip Chaney</td>
-                            <td>$38,735</td>
-                            <td>Korea, South</td>
-                          </tr>
-                        </tbody>
-                      </table>
+                      
+<span id="main-file-list"></span>
+
+
+                          
+                        
                     </div>
                   </div>
                 </div>
 
 
             <div class="col-lg-6 col-md-12">
+               
               <div class="card">
                 <div class="card-header card-header-tabs card-header-primary">
                   <div class="nav-tabs-navigation">
@@ -699,30 +841,7 @@
       </div>
       <footer class="footer">
         <div class="container-fluid">
-          <nav class="float-left">
-            <ul>
-              <li>
-                <a href="https://www.creative-tim.com">
-                  Creative Tim
-                </a>
-              </li>
-              <li>
-                <a href="https://creative-tim.com/presentation">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="http://blog.creative-tim.com">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="https://www.creative-tim.com/license">
-                  Licenses
-                </a>
-              </li>
-            </ul>
-          </nav>
+          <div id="message"></div>
           <div class="copyright float-right">
             &copy;
             <script>
@@ -844,7 +963,13 @@
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-  <script src="../assets/demo/demo.js"></script>
+  <script src="../assets/js/detail3.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.8.0/d3.min.js"></script>
+    
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.12/c3.js"></script>
+
+
+
   <script>
     $(document).ready(function() {
       $().ready(function() {
