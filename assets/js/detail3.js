@@ -734,7 +734,7 @@ function makeFileTable(fileList) {
         <td>${e.securityClass}</td>
         <td>${e.filter}</td>
         <td>${e.filePath}</td>
-        <td ><span title="${e.MD5}">${e.MD5.substring(0, 4)}...</span></td>
+        <td ><span title="${e.MD5}">${e.MD5.substring(0, 6)}...</span></td>
         <td ><button id="btn-${e.MD5}" onClick="fileNoteSelected(this)"  type="button" class="btn btn-info">FileNote <span class="badge badge-warning"><span>${ findFileNoteFromStorage(e.MD5).length.toString() }</span></span></button></td>
       </tr>
     `).join("\n")
@@ -772,7 +772,7 @@ function fileNoteSelected(e) {
     document.getElementById("file-note-path").innerHTML = fileInfo[0].filePath
     document.getElementById("file-note-busclass").innerHTML = fileInfo[0].businessClass
     document.getElementById("file-note-sec").innerHTML = fileInfo[0].securityClass
-    document.getElementById("file-note-email").innerHTML = fileInfo[0].email
+    document.getElementById("file-note-email").innerHTML = fileInfo[0].employeeEmail
 
     document.getElementById("file-note-class").innerHTML = fileInfo[0].filter
     document.getElementById("file-note-ext").innerHTML = fileInfo[0].extension
@@ -782,12 +782,12 @@ function fileNoteSelected(e) {
     var fileNoteHist = document.getElementById("file-note-history") //.innerHTML = fileInfo[0].size
     var lfileNotedata = findFileNoteFromStorage(MD5id)
 
-    var tmpTable = `<table>`
+    var tmpTable = `<table class="table"><thead><tr><td>id</td><td>Note</td></tr></thead>`
     
-    tmpTable += lfileNotedata.map( note => `<tr><td>${note.ID}</td><td>${note.note}</td></tr>`)
+    tmpTable += lfileNotedata.map( note => `<tr><td>${(note.ID).substring(0, 6)}</td><td>${note.note}</td></tr>`).join("\n")
     
     tmpTable += `</table>`
-    fileNoteHist.innerHTML += tmpTable
+    fileNoteHist.innerHTML = tmpTable
 
     $('#exampleModalCenter').modal('show')
     var temp = `
