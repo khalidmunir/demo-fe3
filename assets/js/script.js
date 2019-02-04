@@ -27,7 +27,7 @@ function findManagerFromLS(ID) {
  
  
  function findTeamFromLS(PID) {
-     const objArray = JSON.parse(localStorage.getItem("local_data"));
+     const objArray = JSON.parse(localStorage.getItem("demofe3-local_data"));
      return filterObj = objArray.filter(function(e) {
          return e.PUUID == PID;
      });

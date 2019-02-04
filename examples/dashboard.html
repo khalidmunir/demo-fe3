@@ -71,7 +71,7 @@
               <p>Sprint2 Demo</p>
             </a>
           </li>
-          <li class="nav-item ">
+          <!-- <li class="nav-item ">
             <a class="nav-link" href="./tables.html">
               <i class="material-icons">content_paste</i>
               <p>Table List</p>
@@ -112,7 +112,7 @@
               <i class="material-icons">unarchive</i>
              
             </a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
@@ -158,11 +158,11 @@
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Mike John responded to your email</a>
+                  <a class="dropdown-item" href="#">Mike John resolved issue #557-221</a>
                   <a class="dropdown-item" href="#">You have 5 new tasks</a>
-                  <a class="dropdown-item" href="#">You're now friend with Andrew</a>
-                  <a class="dropdown-item" href="#">Another Notification</a>
-                  <a class="dropdown-item" href="#">Another One</a>
+                  <a class="dropdown-item" href="#">3 files marked for escalation. </a>
+                  <a class="dropdown-item" href="#">Next Deletion Action Before - 3/4/20 </a>
+                  <a class="dropdown-item" href="#">Another Important Note</a>
                 </div>
               </li>
               <li class="nav-item dropdown">
@@ -265,6 +265,22 @@
                 </div>
               <div class="row">
                   <div class="col-lg-3 col-md-6 col-sm-6">
+                      <div class="card team-card card-stats">
+                        <div class="card-header card-header-danger card-header-icon">
+                          <div class="card-icon">
+                            <i class="material-icons">delete_forever</i>
+                          </div>
+                          <p class="card-category">Deletion Confirmed</p>
+                          <h3 class="card-title">15</h3>
+                        </div>
+                        <div class="card-footer">
+                          <div class="stats">
+                            <i class="material-icons">local_offer</i> 3 for this week
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="card team-card card-stats">
                       <div class="card-header card-header-warning card-header-icon">
                         <div class="card-icon">
@@ -299,22 +315,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card team-card card-stats">
-                      <div class="card-header card-header-danger card-header-icon">
-                        <div class="card-icon">
-                          <i class="material-icons">delete_forever</i>
-                        </div>
-                        <p class="card-category">Deletion Confirmed</p>
-                        <h3 class="card-title">15</h3>
-                      </div>
-                      <div class="card-footer">
-                        <div class="stats">
-                          <i class="material-icons">local_offer</i> 3 for this week
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                 
                   <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="card team-card card-stats">
                       <div class="card-header card-header-info card-header-icon">
@@ -339,7 +340,7 @@
                 <div class="row">
                     <div class="col-md-4">
                       <div class="card card-chart">
-                        <div class="card-header card-header-success">
+                        <div class="card-header card-header-success card-header-success">
                           <div class="ct-chart" id="dailySalesChart"></div>
                         </div>
                         <div class="card-body">
@@ -393,13 +394,13 @@
           <div class="row">
             <div class="col-md-4">
               <div class="card card-chart">
-                <div class="card-header card-header-success">
+                <div class="card-header card-header-success card-header-success2">
                     <div id="pie-chart"></div>
                 </div>
                 <div class="card-body">
-                  <h4 class="card-title">Daily Sales</h4>
+                  <h4 class="card-title">Filter By Security Classifications</h4>
                   <p class="card-category">
-                    <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
+                    <span class="text-success"><i class="fa fa-long-arrow-up"></i> 15% </span> increase in files detected.</p>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
@@ -410,12 +411,12 @@
             </div>
             <div class="col-md-4">
               <div class="card card-chart">
-                <div class="card-header card-header-warning">
+                <div class="card-header card-header-success card-header-success2">
                     <div id="chart"></div>
                 </div>
                 <div class="card-body">
-                  <h4 class="card-title">Email Subscriptions</h4>
-                  <p class="card-category">Last Campaign Performance</p>
+                  <h4 class="card-title">Filter By File Classification</h4>
+                  <p class="card-category">Internal classifications</p>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
@@ -426,16 +427,16 @@
             </div>
             <div class="col-md-4">
               <div class="card card-chart">
-                <div class="card-header card-header-danger">
+                <div class="card-header card-header-success card-header-success2">
                     <div id="chart3"></div>
                 </div>
                 <div class="card-body">
-                  <h4 class="card-title">Completed Tasks</h4>
-                  <p class="card-category">Last Campaign Performance</p>
+                  <h4 class="card-title">Progress History</h4>
+                  <p class="card-category"> Monthly View</p>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                    <i class="material-icons">access_time</i> campaign sent 2 days ago
+                    <i class="material-icons">access_time</i> Generated 2 days ago
                   </div>
                 </div>
               </div>
@@ -447,49 +448,49 @@
           <div class="row">
               <div class="col-lg-12 col-md-12">
                   <div class="card">
-                    <div class="card-header card-header-warning">
+                    <div class="card-header card-header-primary">
                       <h4 class="card-title">Employees Stats</h4>
                       <p class="card-category">New employees on 15th September, 2016</p>
                       <hr>
                 <div class="well">
-                  <div class="button-group mt-2 mb-2">
+                  <div class="button-group ml-4 mt-2 mb-2">
                     <button
                       onclick="allClicked()"
                       type="button"
-                      class="ml-4 btn btn-info navbar-btn"
+                      class="col-2  btn btn-success navbar-btn"
                     >
                       All files (<span id="user-total1"></span>)
                     </button>
                     <button
                       onclick="pciClicked()"
                       type="button"
-                      class="btn btn-primary navbar-btn"
+                      class="col-2 btn btn-info navbar-btn"
                     >
                       PCI files (<span id="pci-total"></span>)
                     </button>
                     <button
                       onclick="piiClicked()"
                       type="button"
-                      class="btn btn-primary navbar-btn"
+                      class="col-2 btn btn-info navbar-btn"
                     >
                       PII files (<span id="pii-total"></span>)
                     </button>
                     <button
                       onclick="specClicked()"
                       type="button"
-                      class="btn btn-primary navbar-btn"
+                      class="col-2 btn btn-info navbar-btn"
                     >
                       SPEC files (<span id="spec-total"></span>)
                     </button>
                     <button
                       onclick="retClicked()"
                       type="button"
-                      class="btn btn-primary navbar-btn"
+                      class="col-2 btn btn-info navbar-btn"
                     >
                       RET files (<span id="ret-total"></span>)
                     </button>
                   </div>
-                  <div class="button-group ml-4">
+                  <div class="button-group ml-4 mt-2 mb-2 ">
                       <button
                       onclick="pubClicked()"
                       type="button"
@@ -516,7 +517,7 @@
                       type="button"
                       class="col-2 btn btn-danger btn-sm navbar-btn"
                     >
-                      CLASSIFIED (<span id="cla-class-total"></span>)
+                      Confidential (<span id="cla-class-total"></span>)
                     </button>
                     <button
                       onclick="intClicked()"
@@ -541,6 +542,33 @@
                 </div>
 
 
+                <div class="col-lg-6 col-md-12">
+                    <h4 class="card-title">Notifications Style</h4>
+                    <div class="alert alert-info">
+                      <span>This is a plain notification</span>
+                    </div>
+                    <div class="alert alert-info">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <i class="material-icons">close</i>
+                      </button>
+                      <span>This is a notification with close button.</span>
+                    </div>
+                    <div class="alert alert-info alert-with-icon" data-notify="container">
+                      <i class="material-icons" data-notify="icon">add_alert</i>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <i class="material-icons">close</i>
+                      </button>
+                      <span data-notify="message">This is a notification with close button and icon.</span>
+                    </div>
+                    <div class="alert alert-info alert-with-icon" data-notify="container">
+                      <i class="material-icons" data-notify="icon">add_alert</i>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <i class="material-icons">close</i>
+                      </button>
+                      <span data-notify="message">This is a notification with close button and icon and have many lines. You can see that the icon and the close button are always vertically aligned. This is a beautiful notification. So you don't have to worry about the style.</span>
+                    </div>
+                  </div>
+                  
             <div class="col-lg-6 col-md-12">
                
               <div class="card">
@@ -551,19 +579,19 @@
                       <ul class="nav nav-tabs" data-tabs="tabs">
                         <li class="nav-item">
                           <a class="nav-link active" href="#profile" data-toggle="tab">
-                            <i class="material-icons">bug_report</i> Bugs
+                            <i class="material-icons">record_voice_over</i> Delegated
                             <div class="ripple-container"></div>
                           </a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="#messages" data-toggle="tab">
-                            <i class="material-icons">code</i> Website
+                            <i class="material-icons">group</i> Escalated
                             <div class="ripple-container"></div>
                           </a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="#settings" data-toggle="tab">
-                            <i class="material-icons">cloud</i> Server
+                            <i class="material-icons">delete_forever</i> Deletions
                             <div class="ripple-container"></div>
                           </a>
                         </li>
@@ -789,7 +817,7 @@
             </div>
 
 
-            <div class="col-lg-6 col-md-12">
+            <!-- <div class="col-lg-6 col-md-12">
               <div class="card">
                 <div class="card-header card-header-warning">
                   <h4 class="card-title">Employees Stats</h4>
@@ -832,7 +860,7 @@
                   </table>
                 </div>
               </div>
-            </div>
+            </div> -->
 
 
 
@@ -867,12 +895,22 @@
             <form>
             <div class="form-group">
               <label for="exampleFormControlInput1">File Note for <span id="file-note-md5"></span></label>
-              <label for="exampleFormControlInput1">Classification : <span id="file-note-class"></span></label>
-              <label for="exampleFormControlInput1">Security : <span id="file-note-sec"></span></label>
-              
+              <label for="exampleFormControlInput1">File Path <span id="file-note-path"></span></label><br>
+              <label for="exampleFormControlInput1">Filename <span id="file-note-name"></span></label><br>
+              <label for="exampleFormControlInput1">Classification : <span id="file-note-class"></span></label><br>
+              <label for="exampleFormControlInput1">Security : <span id="file-note-sec"></span></label><br>
+              <label for="exampleFormControlInput1">Extension : <span id="file-note-ext"></span></label><br>
+              <label for="exampleFormControlInput1">Business Class : <span id="file-note-busclass"></span></label><br>
+              <label for="exampleFormControlInput1">Last Access <span id="file-note-access"></span></label><br>
+              <label for="exampleFormControlInput1">Email : <span id="file-note-email"></span></label><br>
+              <label for="exampleFormControlInput1">FileSize : <span id="file-note-size"></span></label><br>
+             
             </div>
+
             
-          
+             
+            
+              
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Add Note Below</label>
               <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
@@ -882,7 +920,10 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button id="save-note-btn" onclick="addFileNotetoLS(this)" value="" type="button" class="btn btn-primary">Save changes</button>
+            </div>
+            <div id="file-note-history">
+
             </div>
           </div>
         </div>
@@ -1182,7 +1223,7 @@
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js
       md.initDashboardPageCharts();
-
+      md.showNotification('top','right')
     });
   </script>
 </body>

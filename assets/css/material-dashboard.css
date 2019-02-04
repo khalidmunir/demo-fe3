@@ -18826,4 +18826,10 @@ Copyright (c) 2015 Daniel Eden
   }
 }
 
+.card-header.card-header-success.card-header-success2 {
+  background: linear-gradient(60deg, #fff, rgb(230, 227, 227)) !important;
+}
+
+
+
 /*# sourceMappingURL=dashboard-free.css.map */

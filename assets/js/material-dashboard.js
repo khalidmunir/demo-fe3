@@ -166,12 +166,13 @@ md = {
 
   showNotification: function(from, align) {
     type = ['', 'info', 'danger', 'success', 'warning', 'rose', 'primary'];
+    filerand = [ 'fred.txt', 'mike.txt', 'sarah.xls', 'jane.txt', 'bob.pdf', 'toni.img', 'jeff.doc']
 
     color = Math.floor((Math.random() * 6) + 1);
 
     $.notify({
       icon: "add_alert",
-      message: "Welcome to <b>Material Dashboard Pro</b> - a beautiful admin panel for every web developer."
+      message: `A file requires urget Action <b>${ filerand[color] } </b> - Requires immidate attention or escalation.`
 
     }, {
       type: type[color],

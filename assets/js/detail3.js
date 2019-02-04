@@ -43,12 +43,12 @@ function $_GET(param) {
 window.addEventListener('load', async e => {
   console.log("$$ IN window.addEventListener $$");
 
-  let firstRunEverr = localStorage.getItem("firstRunEv1");
+  let firstRunEverr = localStorage.getItem("demofe3-firstRunEv1");
 
   console.log("FirstRunEv", firstRunEverr);
   if ((firstRunEverr == null) || (firstRunEverr == undefined)) {
       localStorage.clear();
-      localStorage.setItem("firstRunEv1", "1");
+      localStorage.setItem("demofe3-firstRunEv1", "1");
 
   }
 
@@ -57,6 +57,7 @@ window.addEventListener('load', async e => {
   user = findUserFromStorage(urlid)
   files = findUserFilesFromStorage(urlid)
   users = loadAllUsersFromStorage()
+  fileNotedata = JSON.parse(localStorage.getItem("demofe3-filenotes"))  || []
   console.log("FOUND USER",users)
   console.log("FOUND FILES", files)
 
@@ -725,7 +726,7 @@ function makeFileTable(fileList) {
         <option value="#f9f9f9" style="background-color: #f9f9f9;"><i class="fa fa-file"></i>please select</option>
         <option value="lightgreen" style="background-color: lightgreen"><i class="fa fa-file"></i>No Action</option>
         <option value="lightblue" style="background-color: lightblue"><i class="fa fa-file"></i>Moved</option>
-        <option value="yellow" style="background-color: yellow"><i class="fa fa-file"></i>Archived</option>
+        <option value="#daa862" style="background-color: #daa862"><i class="fa fa-file"></i>Archived</option>
         <option value="lightpink" style="background-color: lightpink"><i class="fa fa-file"></i>Lost/unknown</option>
       </select>
       </td>
@@ -734,7 +735,7 @@ function makeFileTable(fileList) {
         <td>${e.filter}</td>
         <td>${e.filePath}</td>
         <td ><span title="${e.MD5}">${e.MD5.substring(0, 4)}...</span></td>
-        <td ><button id="btn-${e.MD5}" onClick="fileNoteSelected(this)"  type="button" class="btn btn-info">Info</button></td>
+        <td ><button id="btn-${e.MD5}" onClick="fileNoteSelected(this)"  type="button" class="btn btn-info">FileNote <span class="badge badge-warning"><span>${ findFileNoteFromStorage(e.MD5).length.toString() }</span></span></button></td>
       </tr>
     `).join("\n")
 
@@ -767,14 +768,50 @@ function fileNoteSelected(e) {
     var fileInfo = findFileFromStorage(MD5id)
     console.log("fileInfo", fileInfo[0])
     document.getElementById("file-note-md5").innerHTML = MD5id
-    document.getElementById("file-note-class").innerHTML = fileInfo[0].fileName
-    document.getElementById("file-note-sec").innerHTML = fileInfo[0].filePath
+    document.getElementById("file-note-name").innerHTML = fileInfo[0].fileName
+    document.getElementById("file-note-path").innerHTML = fileInfo[0].filePath
+    document.getElementById("file-note-busclass").innerHTML = fileInfo[0].businessClass
+    document.getElementById("file-note-sec").innerHTML = fileInfo[0].securityClass
+    document.getElementById("file-note-email").innerHTML = fileInfo[0].email
+
+    document.getElementById("file-note-class").innerHTML = fileInfo[0].filter
+    document.getElementById("file-note-ext").innerHTML = fileInfo[0].extension
+    document.getElementById("file-note-access").innerHTML = fileInfo[0].atime
+    document.getElementById("file-note-size").innerHTML = fileInfo[0].size
+    document.getElementById("save-note-btn").value = MD5id
+    var fileNoteHist = document.getElementById("file-note-history") //.innerHTML = fileInfo[0].size
+    var lfileNotedata = findFileNoteFromStorage(MD5id)
+
+    var tmpTable = `<table>`
+    
+    tmpTable += lfileNotedata.map( note => `<tr><td>${note.ID}</td><td>${note.note}</td></tr>`)
+    
+    tmpTable += `</table>`
+    fileNoteHist.innerHTML += tmpTable
+
     $('#exampleModalCenter').modal('show')
     var temp = `
     
-   
-    
+       
 `
+
+}
+
+function addFileNotetoLS(anID) {
+    console.log("AnID", anID.value)
+    var elem = document.getElementById("exampleFormControlTextarea1")
+    console.log("message", elem.value)
+
+    var lfileNotedata = findFileNoteFromStorage(anID.value)
+
+    console.log("lfileNotedata from storage", lfileNotedata )
+    console.log("fileNotedata from storage", fileNotedata )
+    
+    fileNotedata.push({ ID: anID.value, note: elem.value })
+
+    localStorage.setItem("demofe3-filenotes", JSON.stringify(fileNotedata))
+    $('#exampleModalCenter').modal('hide')
+    elem.value = ""
 
 }
 function findUserFromStorage(ID) {
@@ -786,9 +823,7 @@ function findUserFromStorage(ID) {
 
 function findFileNoteFromStorage(ID) {
     //const objArray = JSON.parse(localStorage.getItem("local_data"));
-    return filterObj = fileNotedata.filter(function(f) {
-        return f.MD5 == ID;
-    });
+    return filterObj = fileNotedata.filter( f =>  f.ID == ID );
   }
 
 
