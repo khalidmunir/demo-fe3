@@ -77,6 +77,10 @@ function createEmployeeTable(str){
     <table class="table">
                       <thead class=" text-primary">
                         <th>
+                          TL
+                        </th>
+                    
+                        <th>
                           User
                         </th>
                         <th>
@@ -108,11 +112,15 @@ function createEmployeeTable(str){
         var locMan = findManagerFromLS(e.managerID)
         RandomNumber = Math.floor((Math.random() * 10000) % 16) + 1
         let randomImage = "/assets/img/faces/" + RandomNumber + ".png"
+        let TL = e.children ? e.children.length : null
     
-        // console.log("locManID", locMan)
-        if (locMan != null ) {
+         console.log("TL", TL)
+        
         return `
         <tr>
+        <td>
+        ${ e.level }
+        </td>
         <td>
         <a href="dashboard.html?id=${e.EMPID}"><span class="btn btn-block btn-primary">${e.firstName} <span class="fa fa-folder-open"></span></span></a>
         </td>
@@ -126,11 +134,11 @@ function createEmployeeTable(str){
         ${e.email}
         </td>
         <td class="text-primary">
-        ${locMan.email}
+        ${locMan ? locMan.email : "none"}
         </td>
         </tr>
 
-    `}}).join('\n')
+    `}).join('\n')
     
     //
     

@@ -60,7 +60,7 @@ window.addEventListener('load', async e => {
   fileNotedata = JSON.parse(localStorage.getItem("demofe3-filenotes"))  || []
   console.log("FOUND USER",users)
   console.log("FOUND FILES", files)
-
+  console.log("FOUND FILES", fileNotedata)
   fixData()
   updatePage()
   allClicked()
@@ -81,7 +81,13 @@ for (iCaret = 0; iCaret < toggler.length; iCaret++) {
 
 
 function loadAllUsersFromStorage() {
-
+  
+    const objArray = JSON.parse(localStorage.getItem("local_data"));
+  //   return filterObj = metaFactdata.filter(function(e) {
+  //       return e.employeeFKID == ID;
+  //   });
+  // }
+  return objArray
 }
 
 function allClicked() {
@@ -651,7 +657,7 @@ function makeTeamList() {
   walkTree(tree)
 
   // console.log("Possible List", possList)
-  document.getElementById("user-name").innerHTML = user[0].lastName + ", " + user[0].firstName
+  document.getElementById("user-name").innerHTML = user[0].lastName.toUpperCase() + ", " + user[0].firstName
   document.getElementById("user-fixed-issues").innerHTML = user[0].fixedIssues 
 
  //  document.getElementById("user-message").innerHTML = roundList[0].length + " direct team members "
@@ -723,10 +729,10 @@ function makeFileTable(fileList) {
       <tr id="row-${e.MD5}" onchange="changedSelect(this)">
         <td>
         <select id="${e.MD5}" onchange="changedSelect(this)" class="btn btn-primary dropdown-toggle">
-        <option value="#f9f9f9" style="background-color: #f9f9f9;"><i class="fa fa-file"></i>please select</option>
+        <option value="#ccc" style="background-color: #ccc;"><i class="fa fa-file"></i>please select</option>
         <option value="lightgreen" style="background-color: lightgreen"><i class="fa fa-file"></i>No Action</option>
         <option value="lightblue" style="background-color: lightblue"><i class="fa fa-file"></i>Moved</option>
-        <option value="#daa862" style="background-color: #daa862"><i class="fa fa-file"></i>Archived</option>
+        <option value="#f5ca8f" style="background-color: #f5ca8f"><i class="fa fa-file"></i>Archived</option>
         <option value="lightpink" style="background-color: lightpink"><i class="fa fa-file"></i>Lost/unknown</option>
       </select>
       </td>
@@ -735,7 +741,7 @@ function makeFileTable(fileList) {
         <td>${e.filter}</td>
         <td>${e.filePath}</td>
         <td ><span title="${e.MD5}">${e.MD5.substring(0, 6)}...</span></td>
-        <td ><button id="btn-${e.MD5}" onClick="fileNoteSelected(this)"  type="button" class="btn btn-info">FileNote <span class="badge badge-warning"><span>${ findFileNoteFromStorage(e.MD5).length.toString() }</span></span></button></td>
+        <td ><button id="btn-${e.MD5}" onClick="fileNoteSelected(this)"  type="button" class="btn btn-info">FileNote <span class="badge badge-warning"><span class="" id="badge-${ e.MD5 }">${ findFileNoteFromStorage(e.MD5).length || "0" }</span></span></button></td>
       </tr>
     `).join("\n")
 
@@ -750,7 +756,7 @@ function makeFileTable(fileList) {
 async function updateData() {
   employeedata = await fetch('./employeeV2.json').then(emp=>emp.clone().json());
   metaFactdata = await fetch('./metaFactV2.json').then(met=>met.clone().json());
-
+  fileNotedata = localStorage.getItem("demofe3")
   addJsonTags()
   console.log('GEORGE1', employeedata);
   // metaFactdata
@@ -782,9 +788,9 @@ function fileNoteSelected(e) {
     var fileNoteHist = document.getElementById("file-note-history") //.innerHTML = fileInfo[0].size
     var lfileNotedata = findFileNoteFromStorage(MD5id)
 
-    var tmpTable = `<table class="table"><thead><tr><td>id</td><td>Note</td></tr></thead>`
+    var tmpTable = `<table class="table"><thead><tr><td>id</td><td>date</td><td>Note</td></tr></thead>`
     
-    tmpTable += lfileNotedata.map( note => `<tr><td>${(note.ID).substring(0, 6)}</td><td>${note.note}</td></tr>`).join("\n")
+    tmpTable += lfileNotedata.map( note => `<tr><td>${(note.ID).substring(0, 6)}</td><td>${note.date}</td><td>${note.note}</td></tr>`).join("\n")
     
     tmpTable += `</table>`
     fileNoteHist.innerHTML = tmpTable
@@ -801,16 +807,22 @@ function addFileNotetoLS(anID) {
     console.log("AnID", anID.value)
     var elem = document.getElementById("exampleFormControlTextarea1")
     console.log("message", elem.value)
-
-    var lfileNotedata = findFileNoteFromStorage(anID.value)
-
-    console.log("lfileNotedata from storage", lfileNotedata )
+   
+    var d = new Date();
+    var datetxt = d.getDay() + "/" + d.getMonth()+1 + "/" +d.getFullYear();
+    var badgeElem = document.getElementById( "badge-" + anID.value )
+    var elemValue = parseInt(badgeElem.innerHTML)
+    console.log("badgeElem", badgeElem)
+    //var lfileNotedata = findFileNoteFromStorage(anID.value)
+    elemValue++
+    //console.log("lfileNotedata from storage", lfileNotedata )
     console.log("fileNotedata from storage", fileNotedata )
     
-    fileNotedata.push({ ID: anID.value, note: elem.value })
+    fileNotedata.push({ date: datetxt, ID: anID.value, note: elem.value })
 
     localStorage.setItem("demofe3-filenotes", JSON.stringify(fileNotedata))
     $('#exampleModalCenter').modal('hide')
+    badgeElem.innerHTML = elemValue
     elem.value = ""
 
 }
