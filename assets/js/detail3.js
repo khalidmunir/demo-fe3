@@ -298,6 +298,11 @@ function addJsonTags() {
 
   employeedata.map( user => {
     user.fixedIssues = randomIntFromInterval(3, 50)
+    user.totalUsage = randomIntFromInterval(300, 500000000)
+    user.teamDelete = randomIntFromInterval(1, 150)
+    user.teamFilesUsed = randomIntFromInterval(1, 150)
+    user.teamFilesTotals = randomIntFromInterval(300, 500000000)
+    user.teamEscalation = randomIntFromInterval(1, 150)
 
   })
 
@@ -657,8 +662,15 @@ function makeTeamList() {
   walkTree(tree)
 
   // console.log("Possible List", possList)
-  document.getElementById("user-name").innerHTML = user[0].lastName.toUpperCase() + ", " + user[0].firstName
+  document.getElementById("user-name").innerHTML = "<h2>" + user[0].lastName.toUpperCase() + ", " + user[0].firstName + "</h2>"
   document.getElementById("user-fixed-issues").innerHTML = user[0].fixedIssues 
+  document.getElementById("user-total-usage").innerHTML = user[0].totalUsage 
+  document.getElementById("team-delete").innerHTML = user[0].teamDelete 
+  document.getElementById("team-files-used").innerHTML = user[0].teamFilesUsed 
+  document.getElementById("team-files-total").innerHTML = user[0].teamFilesTotals 
+  document.getElementById("team-escalate").innerHTML = user[0].teamEscalation 
+
+  
 
  //  document.getElementById("user-message").innerHTML = roundList[0].length + " direct team members "
 }
@@ -788,7 +800,7 @@ function fileNoteSelected(e) {
     var fileNoteHist = document.getElementById("file-note-history") //.innerHTML = fileInfo[0].size
     var lfileNotedata = findFileNoteFromStorage(MD5id)
 
-    var tmpTable = `<table class="table"><thead><tr><td>id</td><td>date</td><td>Note</td></tr></thead>`
+    var tmpTable = `<table class="table table-active table-sm text-dark"><thead><tr><td>id</td><td>date</td><td>Note</td></tr></thead>`
     
     tmpTable += lfileNotedata.map( note => `<tr><td>${(note.ID).substring(0, 6)}</td><td>${note.date}</td><td>${note.note}</td></tr>`).join("\n")
     
@@ -817,9 +829,9 @@ function addFileNotetoLS(anID) {
     elemValue++
     //console.log("lfileNotedata from storage", lfileNotedata )
     console.log("fileNotedata from storage", fileNotedata )
-    
-    fileNotedata.push({ date: datetxt, ID: anID.value, note: elem.value })
-
+    if (elem.value != "") {
+      fileNotedata.push({ date: datetxt, ID: anID.value, note: elem.value })
+    }
     localStorage.setItem("demofe3-filenotes", JSON.stringify(fileNotedata))
     $('#exampleModalCenter').modal('hide')
     badgeElem.innerHTML = elemValue
