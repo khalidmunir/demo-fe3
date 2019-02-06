@@ -40,13 +40,13 @@ function initApp() {
 }
 
 async function updateData() {
-    console.log("In UPDATEDATA")
+    //console.log("In UPDATEDATA")
     //var res = await fetch(`./data1.json`);
     employeedata = await fetch('./employeeV2.json').then(emp=>emp.clone().json());
     metaFactdata = await fetch('./metaFactV2.json').then(met=>met.clone().json());
-    console.log('look GEORGE1..employees...', employeedata);
+    //console.log('look GEORGE1..employees...', employeedata);
     // metaFactdata
-    console.log('look GEORGE2..files...', metaFactdata);
+    //console.log('look GEORGE2..files...', metaFactdata);
 
 
     //var localInfo = await res.json();
@@ -114,7 +114,7 @@ function createEmployeeTable(str){
         let randomImage = "/assets/img/faces/" + RandomNumber + ".png"
         let TL = e.children ? e.children.length : null
     
-         console.log("TL", TL)
+         // console.log("TL", TL)
         
         return `
         <tr>
@@ -128,7 +128,7 @@ function createEmployeeTable(str){
         <img src="${randomImage}" alt="Avatar" class="avatar">
         </td>
         <td>
-        ${e.firstName} ${e.lastName}
+        ${ e.lastName.toUpperCase() }, ${e.firstName} 
         </td>
         <td>
         ${e.email}

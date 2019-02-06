@@ -58,9 +58,9 @@ window.addEventListener('load', async e => {
   files = findUserFilesFromStorage(urlid)
   users = loadAllUsersFromStorage()
   fileNotedata = JSON.parse(localStorage.getItem("demofe3-filenotes"))  || []
-  console.log("FOUND USER",users)
-  console.log("FOUND FILES", files)
-  console.log("FOUND FILES", fileNotedata)
+  // console.log("FOUND USER",users)
+  // console.log("FOUND FILES", files)
+  // console.log("FOUND FILES", fileNotedata)
   fixData()
   updatePage()
   allClicked()
@@ -247,7 +247,7 @@ function pubClicked() {
 
 
 function fixData() {
-  console.log("oppourtunity to fix the data", files)
+  //console.log("oppourtunity to fix the data", files)
   PCIFiles = files.filter( f => f.filter == "PCI") 
   PIIFiles = files.filter( f => f.filter == "PII")
   SPECFiles = files.filter(function(f) {
@@ -318,39 +318,16 @@ function addJsonTags() {
 
   })
 
-  console.log("Finished file", metaFactdata)
-  console.log("Finished file", users)
+  // console.log("Finished file", metaFactdata)
+  // console.log("Finished file", users)
 }
 
 function makeOwnTeam(teamLeader) {
   //  { id: 7, name: "Sales and Events", hasChild: true, expanded: true },
-   console.log("OWN TEAM", teamLeader)
-var res = []  
-  //  res = teamLeader.map( e => {
-  //    var hasCHILD = e.children > 0 ? true : false 
-  //   return ({
-  //     id: e.EMPID,
-  //     name: e.firstName + " "  + e.lastName,
-  //     hasChild: hasCHILD,
-  //     expanded : true
-  //   })
-
-  //  })
-
-//    $(function () {
-
-//     $("#treeView").ejTreeView({
-
-//         fields: { id: "id", parentId: "pid", text: "name", hasChild: "hasChild", dataSource: res, expanded: "expanded" },
-
-//     });
-
-//     //Creates Object for TreeView.
-
-//     treeObj = $("#treeView").data("ejTreeView");
-
-// });
-   console.log("res", res)
+  // console.log("OWN TEAM", teamLeader)
+  var res = []  
+  
+  // console.log("res", res)
 
   
 
@@ -362,10 +339,10 @@ var res = []
            return emp.level > locLev
   })
 
-  console.log("PossUserList",possibleUserList)
+  // console.log("PossUserList",possibleUserList)
 
     var data = [ teamLeader, ...possibleUserList ] 
-    console.log("data after mashup", data)
+    // console.log("data after mashup", data)
     var obj = {};
     obj.rootElements = [];
     for (i in data) {
@@ -398,14 +375,14 @@ var res = []
     //         }
     //     }
     // }
-    console.log("Own TEAM TREE", obj.rootElements);
+    // console.log("Own TEAM TREE", obj.rootElements);
 
 
       //console.log("Possible list", possibleUserList)
-      console.log("teamLeader list", teamLeader)
+      // console.log("teamLeader list", teamLeader)
       team = teamLeader
     
-      console.log("team", JSON.stringify(team))
+      // console.log("team", JSON.stringify(team))
 
       //var treeview = team
     //   const iterate = (treeview) => {
@@ -436,10 +413,10 @@ function walkTree (t) {
 
  
  for( node in t) {
-   console.log("node", t[node])
-   console.log("node name", t[node].firstName + " " + t[node].lastName)
+  //  console.log("node", t[node])
+  //  console.log("node name", t[node].firstName + " " + t[node].lastName)
    if (t[node].children) {
-     console.log("GOt CHildren: t[node].children.length: ", t[node].children)
+    //  console.log("GOt CHildren: t[node].children.length: ", t[node].children)
      walkTree(t[node].children)
     //  if (t[node].children.length > 0) {
     //    //for (child in t[node].children) {
@@ -447,7 +424,7 @@ function walkTree (t) {
 
     //    //}
     //  } 
-       console.log("In Walktree", t)
+      //  console.log("In Walktree", t)
 
      
    }
@@ -657,7 +634,7 @@ function makeTeamList() {
       {'id':7 ,'parentid': 4}
   ];
   tree = unflattenToObject(mydata);
-  console.log("NEW TREE", tree)
+  // console.log("NEW TREE", tree)
 
   walkTree(tree)
 
@@ -677,7 +654,7 @@ function makeTeamList() {
 }
 
 function updatePage() {
-  console.log("Update web page")
+  // console.log("Update web page")
   files = findUserFilesFromStorage(urlid)
  
 
@@ -786,9 +763,9 @@ async function updateData() {
   metaFactdata = await fetch('./metaFactV2.json').then(met=>met.clone().json());
   fileNotedata = localStorage.getItem("demofe3")
   addJsonTags()
-  console.log('GEORGE1', employeedata);
+  // console.log('GEORGE1', employeedata);
   // metaFactdata
-  console.log('GEORGE2', metaFactdata);
+  // console.log('GEORGE2', metaFactdata);
 
 
 }
@@ -803,10 +780,10 @@ function fileNoteSelected(e) {
     //e.preventDefaults()
     //console.log("selected", btn.value)
     var MD5id = e.id.substring(4)
-    console.log("this select", e.id)
-    console.log("MD5 found ", MD5id)
+    // console.log("this select", e.id)
+    // console.log("MD5 found ", MD5id)
     var fileInfo = findFileFromStorage(MD5id)
-    console.log("fileInfo", fileInfo[0])
+    // console.log("fileInfo", fileInfo[0])
     //exampleModalLongTitle
     document.getElementById("exampleModalLongTitle").innerHTML = "File note for : " + MD5id
     document.getElementById("file-note-md5").innerHTML = MD5id
@@ -840,19 +817,19 @@ function fileNoteSelected(e) {
 }
 
 function addFileNotetoLS(anID) {
-    console.log("AnID", anID.value)
+    // console.log("AnID", anID.value)
     var elem = document.getElementById("exampleFormControlTextarea1")
-    console.log("message", elem.value)
+    // console.log("message", elem.value)
    
     var d = new Date();
     var datetxt = d.getDay() + "/" + d.getMonth()+1 + "/" +d.getFullYear();
     var badgeElem = document.getElementById( "badge-" + anID.value )
     var elemValue = parseInt(badgeElem.innerHTML)
-    console.log("badgeElem", badgeElem)
+    // console.log("badgeElem", badgeElem)
     //var lfileNotedata = findFileNoteFromStorage(anID.value)
     elemValue++
     //console.log("lfileNotedata from storage", lfileNotedata )
-    console.log("fileNotedata from storage", fileNotedata )
+    // console.log("fileNotedata from storage", fileNotedata )
     if (elem.value != "") {
       fileNotedata.push({ date: datetxt, ID: anID.value, note: elem.value })
     }
