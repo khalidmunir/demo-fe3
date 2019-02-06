@@ -292,9 +292,9 @@ function randomIntFromInterval(min,max) // min and max included
 
 function addJsonTags() {
   // add some missing json tags
-  //"size":2840125,"ctime":"10/6/2018","mtime":"4/16/2018","atime":"1/13/2018","hasSeenCount":0,
-  console.log("in JSON tags")
-  console.log("")
+  // "size":2840125,"ctime":"10/6/2018","mtime":"4/16/2018","atime":"1/13/2018","hasSeenCount":0,
+  // console.log("in JSON tags")
+  // console.log("")
 
   employeedata.map( user => {
     user.fixedIssues = randomIntFromInterval(3, 50)
