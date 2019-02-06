@@ -17,7 +17,7 @@ function findManagerFromLS(ID) {
 
 
 function findTeamFromLS(PID) {
-    const objArray = JSON.parse(localStorage.getItem("local_data"));
+    const objArray = JSON.parse(localStorage.getItem("fe2-local_data"));
     return filterObj = objArray.filter(function(e) {
         return e.PUUID == PID;
     });
@@ -92,7 +92,7 @@ async function doSomething() {
     await console.log("results stringify", JSON.stringify(results))
 
 
-    await localStorage.setItem(`fetchedData`, JSON.stringify(results))
+    await localStorage.setItem(`fe2-fetchedData`, JSON.stringify(results))
 
     myText.textContent = "hello, world!";
 
@@ -122,12 +122,15 @@ async function doSomething() {
 window.addEventListener('load', async e => {
     console.log("$$ IN window.addEventListener $$");
 
-    let firstRunEverr = localStorage.getItem("firstRunEv1");
+    let firstRunEverr = localStorage.getItem("fe2-firstRunEv1");
 
     console.log("FirstRunEv", firstRunEverr);
     if ((firstRunEverr == null) || (firstRunEverr == undefined)) {
-        localStorage.clear();
-        localStorage.setItem("firstRunEv1", "1");
+        localStorage.setItem("fe2-local_data", "");
+        localStorage.setItem("fe2-local_employee", "");
+        localStorage.setItem("fe2-local_metaFact", "");                
+     
+        localStorage.setItem("fe2-firstRunEv1", "1");
 
     }
 
@@ -155,9 +158,9 @@ async function updateData() {
     var localInfo = await res.json();
     var localemployeedata = employeedata;
     var localmetaFactdata = metaFactdata;
-    await localStorage.setItem(`local_data`, JSON.stringify(localInfo));
-    await localStorage.setItem(`local_employee`, JSON.stringify(localemployeedata))
-    await localStorage.setItem('local_metaFact', JSON.stringify(localmetaFactdata))
+    await localStorage.setItem(`fe2-local_data`, JSON.stringify(localInfo));
+    await localStorage.setItem(`fe2-local_employee`, JSON.stringify(localemployeedata))
+    await localStorage.setItem('fe2-local_metaFact', JSON.stringify(localmetaFactdata))
 
     console.log(typeof(res))
     console.log(typeof(localInfo))

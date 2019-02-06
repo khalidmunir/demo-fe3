@@ -42,12 +42,12 @@ function $_GET(param) {
 window.addEventListener('load', async e => {
   console.log("$$ IN window.addEventListener $$");
 
-  let firstRunEverr = localStorage.getItem("firstRunEv1");
+  let firstRunEverr = localStorage.getItem("fe2-firstRunEv1");
 
   console.log("FirstRunEv", firstRunEverr);
   if ((firstRunEverr == null) || (firstRunEverr == undefined)) {
-      localStorage.clear();
-      localStorage.setItem("firstRunEv1", "1");
+      //localStorage.clear();
+      localStorage.setItem("fe2-firstRunEv1", "1");
 
   }
 

@@ -298,10 +298,10 @@ function addJsonTags() {
 
   employeedata.map( user => {
     user.fixedIssues = randomIntFromInterval(3, 50)
-    user.totalUsage = randomIntFromInterval(300, 500000000)
+    user.totalUsage = randomIntFromInterval(300, 5000000000)
     user.teamDelete = randomIntFromInterval(1, 150)
-    user.teamFilesUsed = randomIntFromInterval(1, 150)
-    user.teamFilesTotals = randomIntFromInterval(300, 500000000)
+    user.teamFilesUsed = randomIntFromInterval(300, 9999999)
+    user.teamFilesTotals = randomIntFromInterval(5000000000, 5000000000000)
     user.teamEscalation = randomIntFromInterval(1, 150)
 
   })
@@ -664,10 +664,11 @@ function makeTeamList() {
   // console.log("Possible List", possList)
   document.getElementById("user-name").innerHTML = "<h2>" + user[0].lastName.toUpperCase() + ", " + user[0].firstName + "</h2>"
   document.getElementById("user-fixed-issues").innerHTML = user[0].fixedIssues 
-  document.getElementById("user-total-usage").innerHTML = user[0].totalUsage 
+  document.getElementById("user-total-usage").innerHTML = humanFileSize(user[0].totalUsage, true) 
   document.getElementById("team-delete").innerHTML = user[0].teamDelete 
-  document.getElementById("team-files-used").innerHTML = user[0].teamFilesUsed 
-  document.getElementById("team-files-total").innerHTML = user[0].teamFilesTotals 
+  document.getElementById("team-files-used").innerHTML = numberWithCommas(user[0].teamFilesUsed) 
+  document.getElementById("team-files-total").innerHTML = humanFileSize(user[0].teamFilesTotals, true)
+
   document.getElementById("team-escalate").innerHTML = user[0].teamEscalation 
 
   
@@ -721,10 +722,25 @@ function updatePage() {
   
 }
 
+function humanFileSize(bytes, si) {
+    var thresh = si ? 1000 : 1024;
+    if(Math.abs(bytes) < thresh) {
+        return bytes + ' B';
+    }
+    var units = si
+        ? ['kB','MB','GB','TB','PB','EB','ZB','YB']
+        : ['KiB','MiB','GiB','TiB','PiB','EiB','ZiB','YiB'];
+    var u = -1;
+    do {
+        bytes /= thresh;
+        ++u;
+    } while(Math.abs(bytes) >= thresh && u < units.length - 1);
+    return bytes.toFixed(1)+' '+units[u];
+}
 
 function makeFileTable(fileList) {
   var table = `<table class="table table-hover">
-  <thead class="text-warning">
+  <thead class="text-primary">
       <tr>
         <th>Action</th>
         <th>FileName</th>
@@ -777,6 +793,12 @@ async function updateData() {
 
 }
 
+function numberWithCommas(x) {
+  var parts = x.toString().split(".");
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return parts.join(".");
+}
+
 function fileNoteSelected(e) {
     //e.preventDefaults()
     //console.log("selected", btn.value)
@@ -785,6 +807,8 @@ function fileNoteSelected(e) {
     console.log("MD5 found ", MD5id)
     var fileInfo = findFileFromStorage(MD5id)
     console.log("fileInfo", fileInfo[0])
+    //exampleModalLongTitle
+    document.getElementById("exampleModalLongTitle").innerHTML = "File note for : " + MD5id
     document.getElementById("file-note-md5").innerHTML = MD5id
     document.getElementById("file-note-name").innerHTML = fileInfo[0].fileName
     document.getElementById("file-note-path").innerHTML = fileInfo[0].filePath
