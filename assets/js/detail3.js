@@ -1121,7 +1121,22 @@ function changedSelect(e) {
   console.log("this select", e.id)
   var random = Math.random()
   console.log(random*1000 + 1000)
-  setTimeout(function(){ document.getElementById("row-" + e.id).setAttribute('style', `background-color:${e.value}`); }, 1500);
+  setTimeout(function(){ document.getElementById("row-" + e.id).setAttribute('style', `background-color:${e.value}`); }, 500);
+  setTimeout(function(){ 
+    var elemRow = document.getElementById("row-" + e.id)
+    var elemHist = document.getElementById("hist-files")
+    // var elemRow = document.getElementById("row-" + e.id)
+    console.log("elemRow", elemRow)
+    console.log("elemHist", elemHist)
+    var elm = elemRow ? elemRow.innerHTML : null 
+    if ( elemHist && elemRow ) elemHist.innerHTML += elm 
+    if ( elemRow ) elemRow.innerHTML = ""
+    //document.getElementById("hist-files") = document.getElementById("row-" + e.id).innerHTML
+
+    // histElem += elemRow
+    document.getElementById("row-" + e.id).innerHTML = ""
+  
+  }, 3500)
   //document.getElementById("row-" + e.id).setAttribute('style', `background-color:${e.value}`); // += e.value
 }
 

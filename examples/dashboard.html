@@ -62,13 +62,13 @@
           <li class="nav-item ">
             <a class="nav-link" href="/demo-fe/index.html">
               <i class="material-icons">content_paste</i>
-              <p>Sprint1 Demo</p>
+              <p data-placement="right" title="The Sprint1 demo has features for displaying the team data in a differant fashion, hence keeping the link till we port this functionality to the new demo (i.e. handle team information and team totals).">Sprint1 Demo</p>
             </a>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="/demo-fe2/index.html">
               <i class="material-icons">content_paste</i>
-              <p>Sprint2 Demo</p>
+              <p data-placement="right" title="The Sprint2 demo has functioning charts with tooltip legends displaying the file history data. These are not currently ported to the new demo yet.">Sprint2 Demo</p>
             </a>
           </li>
         </ul>
@@ -297,22 +297,22 @@
                   </div>
                 <div class="row">
                     <div class="col-md-4">
-                      <div class="card card-chart">
-                        <div class="card-header card-header-success card-header-success">
-                          <div class="ct-chart" id="dailySalesChart"></div>
-                        </div>
-                        <div class="card-body">
-                          <h4 class="card-title">Deletion History</h4>
-                          <p class="card-category">
-                            <span class="text-success"><i class="fa fa-long-arrow-up"></i> 12% </span> increase in Deletion Activity.</p>
-                        </div>
-                        <div class="card-footer">
-                          <div class="stats">
-                            <i class="material-icons">access_time</i> updated 34 minutes ago
+                        <div class="card card-chart">
+                          <div class="card-header card-header-danger">
+                            <div class="ct-chart" id="completedTasksChart"></div>
+                          </div>
+                          <div class="card-body">
+                            <h4 class="card-title">Deletion Progress</h4>
+                            <p class="card-category">Deletion Performance</p>
+                          </div>
+                          <div class="card-footer">
+                            <div class="stats">
+                              <i class="material-icons">access_time</i> Stats Updated 2 days ago
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
+                    
                     <div class="col-md-4">
                       <div class="card card-chart">
                         <div class="card-header card-header-warning">
@@ -329,22 +329,25 @@
                         </div>
                       </div>
                     </div>
+                    
                     <div class="col-md-4">
-                      <div class="card card-chart">
-                        <div class="card-header card-header-danger">
-                          <div class="ct-chart" id="completedTasksChart"></div>
-                        </div>
-                        <div class="card-body">
-                          <h4 class="card-title">Deletion Progress</h4>
-                          <p class="card-category">Deletion Performance</p>
-                        </div>
-                        <div class="card-footer">
-                          <div class="stats">
-                            <i class="material-icons">access_time</i> Stats Updated 2 days ago
+                        <div class="card card-chart">
+                          <div class="card-header card-header-success card-header-success">
+                            <div class="ct-chart" id="dailySalesChart"></div>
+                          </div>
+                          <div class="card-body">
+                            <h4 class="card-title">Deletion History</h4>
+                            <p class="card-category">
+                              <span class="text-success"><i class="fa fa-long-arrow-up"></i> 12% </span> increase in Deletion Activity.</p>
+                          </div>
+                          <div class="card-footer">
+                            <div class="stats">
+                              <i class="material-icons">access_time</i> updated 34 minutes ago
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
+                      
                   </div>
 
 
@@ -786,7 +789,28 @@
         </div>
       </div>
       <footer class="footer">
-        <div id="message"></div>
+
+          <div class="card-body table-responsive">
+            <h1>File History</h1>
+          <table class="table table-sm table-dark">
+              <thead class="text-primary">
+                  <tr>
+                    <th><b>Action</b></th>
+                    <th>FileName</th>
+                    <th>Security Level</th>
+                    <th>Filter</th>
+                    <th>Path</th>
+                    <th>MD5</th>
+                    <th>FileNote</th>
+                  </tr>
+                </thead>
+                <tbody id="hist-files">
+                 
+
+                </tbody>
+          </table>
+        </div>        
+        
         <!-- <div class="container-fluid">
           <div class="copyright float-right">
             &copy;
@@ -797,6 +821,7 @@
           </div>
         </div> -->
       </footer>
+      <div id="message"></div>
     </div>
   </div>
     <!-- Modal -->
